@@ -1,51 +1,16 @@
 # Argenti - Typescript Poker Challenge
 
-This is the scaffold project for Argenti's poker challenge.
-Use this template to get you up and running for the Argenti challenge, then make changes to the `src/` directory
-to have a functioning solution based on our given instructions.
+This is the poker challenge app.
 
-## Project structure
+This app requires yarn and hence also requires node.js to run, 
+To download node.js click on this link and follow the instructions https://nodejs.org/en/
+To obtain yarn, open a terminal and do ``` yarn install ``` further instruction is provided below
 
-All the relevant code sits in `src/`. An `index.ts` is already present, but there is no limit to writing all your code inside or outside of it. All Jest tests should sit in the `__tests__` folder, and the naming convention requires that the filename includes `.spec` or `.test`, otherwise it will not be picked up.
+# How to run
+1. Click the code button on the top button. A drop down menu will be displayed. The app can be opened through IDE such as visual studio, or if there are no IDE installed in the computer, the app can be downloaded by clicking Download ZIP
+2. Once the app is downloaded. Open the terminal in the IDE or if without IDE, extract the file and into a folder and open the folder, then in the address bar of the folder, clear the exisiting path and type cmd and click enter. A terminal (black screen) will appear. 
+3. A sample .txt file is available in this app. It is located in the bin folder, and the file name is: poker-hands.txt
+4. To run the app using the provided .txt file sample, Type ``` yarn start < bin/poker-hands.txt```
+5. Simply create another custom .txt file with strings of input to be tested and save it in the bin folder, and replace the file name in the instruction above with the name of the new custom file.
+6. The file has to contain at least one line of card sequence that consists of 10 cards, separated by space, for example: 2S 3S 9D TH 4H 5S 3C 7S TS JC
 
-This project also has prettier and eslint set up, making sure that those are both passing will be beneficial to your challenge's review. At the end of this file, you will find links to VSCode extensions that help automatically run Prettier and ESLint whilst you write code.
-
-## Input file
-
-The input file you are required to read is available in `bin/poker-hands.txt`. Make sure your program can read the file from that location.
-
-## Running the code
-
-To run the code whilst developing, use the following command:
-
-```bash
-yarn start
-```
-
-## Testing the code
-
-To run the [Jest](https://jestjs.io/) unit test, use the following command:
-
-```bash
-yarn test
-```
-
-## Extensions
-
-### ESLint
-
-Name: ESLint  
-Id: dbaeumer.vscode-eslint  
-Description: Integrates ESLint JavaScript into VS Code.  
-Version: 2.2.2  
-Publisher: Microsoft  
-VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-
-### Prettier
-
-Name: Prettier - Code formatter  
-Id: esbenp.prettier-vscode  
-Description: Code formatter using prettier  
-Version: 9.5.0  
-Publisher: Prettier  
-VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
