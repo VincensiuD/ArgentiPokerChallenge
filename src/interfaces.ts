@@ -10,3 +10,7 @@ export interface Player  {
     secondHighestCard: Card;
   };
   
+  export interface WinningCounter{
+    player1HandsWon: number;
+    player2HandsWon: number;
+  }
