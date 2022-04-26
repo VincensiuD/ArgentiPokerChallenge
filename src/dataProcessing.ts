@@ -29,7 +29,7 @@ const player2: Player = {
  * @param playerA First player
  * @param playerB Second player
  */
-function checkWinner(playerA: Player, playerB: Player, counter:WinningCounter):void {
+export function checkWinner(playerA: Player, playerB: Player, counter:WinningCounter):void {
   playerA.pokerRank = checkPlayerPokerRank(playerA);
   playerB.pokerRank = checkPlayerPokerRank(playerB);
 
@@ -48,7 +48,13 @@ function checkWinner(playerA: Player, playerB: Player, counter:WinningCounter):v
   }
 }
 
-
+/**
+ * 
+ * @param card1 This function compares 2 cards and determine which cards is higher
+ * It is to be used in conjunction of sort function
+ * @param card2 
+ * @returns number
+ */
 function compare(card1: Card, card2: Card): number {
     let comparison = 0;
     if (card1.rank > card2.rank) {

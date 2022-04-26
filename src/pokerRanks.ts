@@ -226,6 +226,9 @@ export function compareHighestCard(card1: Card, card2: Card): number {
       if (output === 0) {
         playerANewArray = createNewHandsWithoutPairs(playerA, 2);
         playerBNewArray = createNewHandsWithoutPairs(playerB, 2);
+
+        console.log(playerANewArray)
+        console.log(playerBNewArray)
         if (playerANewArray[0].rank > playerBNewArray[0].rank) {
           return 1;
         }
