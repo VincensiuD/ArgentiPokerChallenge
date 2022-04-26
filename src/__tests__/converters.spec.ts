@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-undef */
 import{cardRankConverter,createPlayerCard,createPlayerCardsArray}from'../converters'
 
 
