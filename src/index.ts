@@ -22,11 +22,11 @@ const player2: Player = {
 };
 
 /**
- * This function check the winner of a single game and add the winner in the counter
- * @param playerA First player
- * @param playerB Second player
+ * This function check the winner of a single game and add the winner in the counter.
+ * @param playerA First player.
+ * @param playerB Second player.
  */
-function checkWinner(playerA: Player, playerB: Player):void {
+export function checkWinner(playerA: Player, playerB: Player):void {
   playerA.pokerRank = checkPlayerPokerRank(playerA);
   playerB.pokerRank = checkPlayerPokerRank(playerB);
 
@@ -46,6 +46,22 @@ function checkWinner(playerA: Player, playerB: Player):void {
 }
 
 /**
+ * This function is to be used in the sort function to compare the rank of card
+ * @param card1 
+ * @param card2 
+ * @returns number
+ */
+export function compare(card1: Card, card2: Card): number {
+  let comparison = 0;
+  if (card1.rank > card2.rank) {
+    comparison = 1;
+  } else if (card2.rank > card1.rank) {
+    comparison = -1;
+  }
+  return comparison;
+}
+
+/**
  * This function assign cards to each player from a stream of string
  * @param stream string of cards
  */
@@ -62,25 +78,15 @@ function assignCards(stream: string) {
     player2.hands.push(arrayOfAllCards[j + 5]);
   }
 
-  function compare(card1: Card, card2: Card): number {
-    let comparison = 0;
-    if (card1.rank > card2.rank) {
-      comparison = 1;
-    } else if (card2.rank > card1.rank) {
-      comparison = -1;
-    }
-    return comparison;
-  }
-
   player1.hands = player1.hands.sort(compare);
   player2.hands = player2.hands.sort(compare);
 }
 
 /**
  * This function process the data obtained from .txt files that contains one or multiple games,
- * it then splits them by line if there are multiple games, then create cards and assigns it to players
- * and then check who wins
- * @param data data that was read from file
+ * it then splits them by line if there are multiple games, then create cards and assigns it to players,
+ * and then check who wins.
+ * @param data data that was read from file.
  */
 function dataProcessing(data: any){
   const newData = data.split(/\r?\n/);
@@ -106,5 +112,4 @@ function dataProcessing(data: any){
   dataProcessing(data);
 }
 
- 
 main();

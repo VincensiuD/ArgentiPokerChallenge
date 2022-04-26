@@ -26,9 +26,9 @@ import { Card } from "./interfaces";
   }
 
 /**
- * createPlayerCard creates a card object from string
- * @param string code that represent rank and suit of card
- * @returns a Card object with rank and suit properties
+ * createPlayerCard creates a card object from string.
+ * @param string code that represent rank and suit of card.
+ * @returns a Card object with rank and suit properties.
  */ 
 export function createPlayerCard(string: string): Card {
     const stringArray = string.split("");
@@ -37,9 +37,9 @@ export function createPlayerCard(string: string): Card {
   }
   
 /**
- * Create an array of Cards from array of strings
- * @param cards array of strings
- * @returns array of Card objects
+ * Create an array of Cards from array of strings.
+ * @param cards array of strings.
+ * @returns array of Card objects.
  */
 export function createPlayerCardsArray(cards: string[]): Card[] {
   const arrayOfCards: Card[] = [];
@@ -49,4 +49,3 @@ export function createPlayerCardsArray(cards: string[]): Card[] {
   return arrayOfCards;
 }
 
-  
