@@ -5,6 +5,7 @@ This is the poker challenge app.
 This app requires yarn and hence also requires node.js to run, 
 To download node.js click on this link and follow the instructions https://nodejs.org/en/
 To obtain yarn, open a terminal and do ``` yarn install ``` further instruction is provided below
+This app works better in bash (MingW) rather than powershell
 
 # How to run
 1. Click the code button on the top button. A drop down menu will be displayed. The app can be opened through IDE such as visual studio, or if there are no IDE installed in the computer, the app can be downloaded by clicking Download ZIP
