@@ -1,6 +1,6 @@
 import { Player, Card, WinningCounter } from "./interfaces";
-import { checkPlayerPokerRank, tieBreaker } from "./pokerRanks";
-import { createPlayerCardsArray } from "./converters";
+import { checkPlayerPokerRank, tieBreaker } from "./pokerRanksFunctions";
+import { createPlayerCardsArray } from "./convertersFunctions";
 
 const winningCounter: WinningCounter = {
   player1HandsWon: 0,
