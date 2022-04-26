@@ -1,9 +1,8 @@
 import { dataProcessing } from "./dataProcessing";
 
-
 const fs = require("fs");
 
- const main = () => {
+const main = () => {
   console.log("Welcome to the challenge.");
 
   const data = fs.readFileSync(0, {
@@ -12,7 +11,6 @@ const fs = require("fs");
   });
 
   dataProcessing(data);
-}
+};
 
- 
 main();
