@@ -2,9 +2,9 @@ import {Player, Card} from './interfaces';
 import { getCardFromKey } from './dictionaryFunctions';
 
 /**
- * This function checks if the player's hand fulfils the flush (all same suits) criteria
- * @param player Player object, which contains the player's hands
- * @returns true if all cards in player's hand have the same suit, false otherwise
+ * This function checks if the player's hand fulfils the flush (all same suits) criteria.
+ * @param player Player object, which contains the player's hands.
+ * @returns true if all cards in player's hand have the same suit, false otherwise.
  */
 export function checkFlush(player: Player): boolean {
     for (let j = 0; j < player.hands.length - 1; j+=1) {
@@ -18,9 +18,9 @@ export function checkFlush(player: Player): boolean {
   }
 
   /**
- * This function checks if the player's hand fulfils the straight (sequential rank) criteria
- * @param player Player object, which contains the player's hands
- * @returns true if all cards in the player's hand form a sequential rank, false otherwise
+ * This function checks if the player's hand fulfils the straight (sequential rank) criteria.
+ * @param player Player object, which contains the player's hands.
+ * @returns true if all cards in the player's hand form a sequential rank, false otherwise.
  */
  export function checkStraight(player: Player): boolean {
     for (let j = 0; j < player.hands.length - 1; j+=1) {
@@ -33,10 +33,10 @@ export function checkFlush(player: Player): boolean {
   }
 
   /**
-   * This function will check whether player's hand has any kind of pair combinations
-   * pair combination includes: single pair, double pair, 3 of a kind, full house or 4 of a kind
-   * @param player Player object, which contains the player's hands
-   * @returns true if any of the pair combination mentioned above exists in the player's hand
+   * This function will check whether player's hand has any kind of pair combinations.
+   * pair combination includes: single pair, double pair, 3 of a kind, full house or 4 of a kind.
+   * @param player Player object, which contains the player's hands.
+   * @returns true if any of the pair combination mentioned above exists in the player's hand.
    */
  export function checkPairsCombination(player: Player): number {
     const rankCount: { [key: number]: number } = {};
@@ -97,9 +97,9 @@ export function checkFlush(player: Player): boolean {
   
 
 /**
- * This function calculate the rank of player's poker hand
- * @param player Player object, which contains the player's hands
- * @returns the rank of the player's hand in number, e.g. royal flush = 10, full house = 7 etc
+ * This function calculate the rank of player's poker hand.
+ * @param player Player object, which contains the player's hands.
+ * @returns the rank of the player's hand in number, e.g. royal flush = 10, full house = 7 etc.
  */
  export function checkPlayerPokerRank(player: Player) {
     const flush: boolean = checkFlush(player);
@@ -122,35 +122,57 @@ export function checkFlush(player: Player): boolean {
   }
 
 /**
+ * This function isolate the single unpaired card from player when the player has single/ double pairs.
+ * This function is mainly used to solve tiebreaker in case both players has same pairs rank.
+ * @param player 
+ * @param amount amount of duplicates in the player's hand when player has double or single pairs.
+ * @returns array of unpaired card(s).
+ */
+ export function createNewHandsWithoutPairs(player: Player, amount: number): Card[] {
+    let nonPairsArray: Card[] = player.hands.filter(
+      (x) => x.rank !== player.highestCard.rank
+    );
+    
+    if (amount === 2) {
+      nonPairsArray = nonPairsArray.filter(
+        (x) => x.rank !== player.secondHighestCard.rank
+      );
+    }
+    return nonPairsArray;
+  }
+
+  /**
+   * Determines which card has a higher rank, or if they are there tied.
+   * @param card1 
+   * @param card2 
+   * @returns number 1,2 or 0.
+   */
+export function compareHighestCard(card1: Card, card2: Card): number {
+    if(card1.rank > card2.rank){
+        return 1;
+    }
+    if(card1.rank < card2.rank){
+        return 2;
+    }
+          
+    return 0;
+        }
+
+/**
  * This function will be executed if both players have the same rank. 
  * It will determine the highest rank of each player's card or in case of pairs,
  * it will determine the rank of the cards that have the pair from each player and assign the player
- * with highest rank card as the winner
- * @param playerA First player
- * @param playerB Second player
- * @returns number 1 if the first player wins, or 2 if the second player wins, 0 if tie
+ * with highest rank card as the winner.
+ * @param playerA First player.
+ * @param playerB Second player.
+ * @returns number 1 if the first player wins, or 2 if the second player wins, 0 if tie.
  */
  export function tieBreaker(playerA: Player, playerB: Player): number {
     let output = 0;
   
     let playerANewArray: Card[] = [];
     let playerBNewArray: Card[] = [];
-  
-    function compareHighestCard(card1: Card, card2: Card): number {
-      return card1.rank > card2.rank ? 1 : card1.rank < card2.rank ? 2 : 0;
-    }
-  
-    function createNewHandsWithoutPairs(player: Player, amount: number): Card[] {
-      let nonPairsArray: Card[] = player.hands.filter(
-        (x) => x !== player.highestCard
-      );
-      if (amount === 2) {
-        nonPairsArray = nonPairsArray.filter(
-          (x) => x !== player.secondHighestCard
-        );
-      }
-      return nonPairsArray;
-    }
+    
   
     if (playerA.pokerRank === 10) {
       return 0;
@@ -204,11 +226,10 @@ export function checkFlush(player: Player): boolean {
       if (output === 0) {
         playerANewArray = createNewHandsWithoutPairs(playerA, 2);
         playerBNewArray = createNewHandsWithoutPairs(playerB, 2);
-  
-        if (playerANewArray[0] > playerBNewArray[0]) {
+        if (playerANewArray[0].rank > playerBNewArray[0].rank) {
           return 1;
         }
-        if (playerANewArray[0] < playerBNewArray[0]) {
+        if (playerANewArray[0].rank < playerBNewArray[0].rank) {
           return 2;
         }
       }
@@ -217,4 +238,3 @@ export function checkFlush(player: Player): boolean {
   }
   
  
-  
